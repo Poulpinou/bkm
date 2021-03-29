@@ -1,0 +1,12 @@
+[Unit]
+Description=BKM - Backup Management Service
+After=network.target
+
+[Service]
+Type=simple
+
+#ExecStart=bkm start
+ExecStart=echo "Bkm Started...(fake)"
+
+[Install]
+WantedBy=multi-user.target
