@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # [----- INITIALIZE VARIABLES -----]
-#[Paths]
 # [ Pathes ]
 # This script's absolute path
 SCRIPT_PATH=$(realpath "$0")
 SCRIPT_DIRECTORY=$(dirname "$SCRIPT_PATH")
 
-# The absolute root folder path
+# The path of execution
 EXECUTION_PATH=$(dirname "$0")
 
 # Relative path to the lib directory
@@ -22,33 +21,34 @@ COMMAND_LONG_OPTIONS="help,version,list"
 . "$LIB_PATH"/vars.sh
 . "$UTILS_PATH"/styles.sh
 . "$UTILS_PATH"/messages.sh
+. "$CONFIG_PATH"
 
 # [----- FUNCTIONS -----]
 showHelp() {
   cat <<HELP
-Usage:
+${s_title}[Usage]${s_normal}
   ${s_success}$ bkm [-${COMMAND_SHORT_OPTIONS/[?]/}] [--${COMMAND_LONG_OPTIONS//[,]/ --}]${s_normal}
-  ${s_bold}[Options]${s_normal}
+  ${s_title}[Options]${s_normal}
   -h --help                  ${s_bold}Help :${s_normal} Displays global help
   -V --version               ${s_bold}Version:${s_normal} Displays bkm current version
   -l --list                  ${s_bold}List Commands :${s_normal} Displays every possible command for bkm
 
 
   ${s_success}$ bkm <command> [-${COMMAND_SHORT_OPTIONS/[?]/}] [--${COMMAND_LONG_OPTIONS//[,]/ --}] [{commands-options}]${s_normal}
-  ${s_bold}[General Options]${s_normal}
+  ${s_title}[General Options]${s_normal}
   -h --help        ${s_bold}Help :${s_normal} Displays command's help
   -v --verbose     ${s_bold}Verbose Mode :${s_normal} Enables verbose mode. More detailed logs will be displayed.
 HELP
 }
 
 listCommands() {
-  echo "${s_bold}[Available bkm commands]${s_normal}"
+  echo "${s_title}[Available bkm commands]${s_normal}"
   echo
 
   for cmd in "$LIB_PATH"/cmds/*.cmd; do
-    COMMAND_NAME=$(basename "$cmd")
+    COMMAND_NAME=$(basename "$cmd" .cmd)
     t=$(sed -n -e '1,/cat << DESCRIPTION/d;/DESCRIPTION/q;p' "$cmd")
-    eval "echo \"$t\""
+    eval "echo \"  ▹ $t\""
     echo
   done
 

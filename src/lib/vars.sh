@@ -8,7 +8,7 @@ VERSION="0.0.1"
 # [Pathes]
 # The path to the config file
 #CONFIG_PATH="~/.bkm" # => Real value
-CONFIG_PATH="$LIB_PATH/../.bkm"
+CONFIG_PATH="$LIB_PATH/templates/.bkm"
 
 # The path to commands ($LIB_PATH should be defined)
 COMMANDS_PATH="$LIB_PATH/cmds"

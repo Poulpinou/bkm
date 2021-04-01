@@ -11,21 +11,21 @@ COMMAND_TARGET="<source> <destination>"
 
 # Default settings
 FILE_NAME='%source%_%date%'
-DATE_FORMAT='%Y_%m_%d'
 
 # [----- FUNCTIONS -----]
 showHelp() {
   _showHelp
 
   cat << HELP
-  ${s_bold}[Backup Options]${s_normal}
+  ${s_title}[Backup Options]${s_normal}
   -n --name <pattern>    ${s_bold}Name pattern :${s_normal} The name patter of the backup file at destination (default: "$FILE_NAME").
                          Some variables can be used by the pattern:
                          - ${s_bold}source${s_normal}: the name of the source folder
                          - ${s_bold}destination${s_normal}: the name of the destination folder
                          - ${s_bold}date${s_normal}: the current date (default format: $DATE_FORMAT override it with the date-format option)
                          To use a variable, use this pattern: "%variable%"
-  -f --date-format       ${s_bold}Date format :${s_normal} the format of every date variables (default format: $DATE_FORMAT). See https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
+  -f --date-format       ${s_bold}Date format :${s_normal} the format of every date variables (default format: $DATE_FORMAT).
+                         See https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
 HELP
 }
 
@@ -38,7 +38,7 @@ DESCRIPTION
 }
 
 # [----- LOAD ARGUMENTS AND OPTIONS -----]
-# [Set default values]
+# [ Set default values ]
 VERBOSE=0
 NO_ARGS=0
 
