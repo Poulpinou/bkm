@@ -10,7 +10,8 @@ SCRIPT_DIRECTORY=$(dirname "$SCRIPT_PATH")
 EXECUTION_PATH=$(dirname "$0")
 
 # The relative path to the lib
-LIB_PATH="$SCRIPT_DIRECTORY/.."
+LIB_PATH="/usr/local/lib/bkm" # => Real value
+#LIB_PATH="$SCRIPT_DIRECTORY/.."
 
 # [ Command ]
 # Base options for this command
