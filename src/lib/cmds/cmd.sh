@@ -2,19 +2,28 @@
 
 # [----- INITIALIZE VARIABLES -----]
 # [ Paths ]
-# The directory of this command
-COMMANDS_PATH=$(dirname "$0")
+# This script's absolute path
+SCRIPT_PATH=$(realpath "$0")
+SCRIPT_DIRECTORY=$(dirname "$SCRIPT_PATH")
+
+# The absolute root folder path
+EXECUTION_PATH=$(dirname "$0")
 
 # The relative path to the lib
-LIB_PATH="$COMMANDS_PATH/.."
+LIB_PATH="$SCRIPT_DIRECTORY/.."
 
 # [ Command ]
+# Base options for this command
+COMMAND_SHORT_OPTIONS="hv"
+COMMAND_LONG_OPTIONS="help,verbose"
+
 # The name of this command
-COMMAND_NAME=$(basename "$0")
+COMMAND_NAME=$(basename "$0" .cmd)
 
 # [----- LOAD UTILS -----]
-. "$LIB_PATH"/utils/styles.sh
-. "$LIB_PATH"/utils/messages.sh
+. "$LIB_PATH"/vars.sh
+. "$UTILS_PATH"/styles.sh
+. "$UTILS_PATH"/messages.sh
 
 # [----- FUNCTIONS -----]
 # Displays the help for this command

@@ -2,27 +2,31 @@
 
 # Displays an info message
 # - $1 : the message to display
+# - $2 : options
 logInfo() {
-  echo -e "${s_info}$1${s_normal}"
+  echo -e "$2" "${s_info}$1${s_normal}"
 }
 
 # Displays a success message
 # - $1 : the message to display
+# - $2 : options
 logSuccess() {
-  echo -e "${s_success}$1${s_normal}"
+  echo -e "$2" "${s_success}$1${s_normal}"
 }
 
 # Displays an error message
 # - $1 : the message to display
+# - $2 : options
 logError() {
-  echo -e "${s_error}☠ Error : $1 ☠ ${s_normal}"
+  echo -e "$2" "${s_error}☠ Error : $1 ☠ ${s_normal}"
   #echo -e "[$(date +'%x %X')][$0][ERROR] $1" >>$LOG_FILE
 }
 
 # Displays a warning message
 # - $1 : the message to display
+# - $2 : options
 logWarning() {
-  echo -e "${s_warning}⚠ Warning : $1 ⚠ ${s_normal}"
+  echo -e "$2" "${s_warning}⚠ Warning : $1 ⚠ ${s_normal}"
   #echo -e "[$(date +'%x %X')][$0][WARNING] $1" >>$LOG_FILE
 }
 
