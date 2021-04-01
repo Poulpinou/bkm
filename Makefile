@@ -5,14 +5,15 @@ install: install-library install-binaries install-service create-config
 
 install-library:
 	@echo -n "Installing libraries..." \
-		&& mkdir /usr/libexec/bkm \
-		&& cp src/lib/* /usr/libexec/bkm \
+		&& mkdir -p /usr/local/lib/bkm \
+		&& cp -r src/lib/* /usr/local/lib/bkm \
 		&& echo "Done"
 
 install-binaries:
-	@echo -n "Installing binaries..." \
-		&& cp src/bkm.sh /usr/bin/bkm \
-		&& chmod +x usr/bin/bkm \
+	@echo -n "Installing binaries..."
+	@mkdir -p ~/bin
+	@cp src/bin/bkm.sh ~/bin/bkm \
+		&& chmod +x ~/bin/bkm \
 		&& echo "Done"
 
 install-service:
@@ -21,13 +22,13 @@ install-service:
 
 create-config:
 	@echo -n "Creating configuration..." \
-			&& cp src/lib/templates/.bkm ~/bkm \
+			&& cp src/lib/templates/.bkm ~/.bkm \
 			&& echo "Done"
 
 clean:
 	@echo -n "Cleaning bkm..." \
-		&& rm -rf /usr/libexec/bkm \
-		&& rm /usr/bin/bkm \
-		&& rm ~/.bkm \
+		&& rm -rf /usr/local/lib/bkm \
+		&& rm -f ~/bin/bkm \
+		&& rm -f ~/.bkm \
 		&& echo "Done"
 	@echo "BKM has been successfully removed from your system"
